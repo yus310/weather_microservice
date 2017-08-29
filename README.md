@@ -41,5 +41,6 @@ $ kubectl expose deploy forecast-svc --port=80 --target-port=80 --type="LoadBala
 $ kubectl autoscale deploy forecast-svc --cpu-percent=70 --min=30 --max=300
 
 # Get list of Kubernetes deployments, pods, and services
-kubectl get deployment,pods,services
+
+$ kubectl get deployment,pods,services
 
