@@ -6,7 +6,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import matplotlib
 
-def weatherforecast(geolocationinput):
+def weatherforecast(geolocationinputs):
 
 	username='yus310'
 	password='123'
