@@ -11,9 +11,9 @@ class Forecast(Resource):
 
         parser = reqparse.RequestParser()
         parser.add_argument('lat', type=float,
-                 help='slength cannot be converted')
+                 help='lat cannot be converted')
         parser.add_argument('lon', type=float,
-                 help='swidth cannot be converted')
+                 help='lon cannot be converted')
         args = parser.parse_args()
 
         forecast = makeprediction.weatherforecast([

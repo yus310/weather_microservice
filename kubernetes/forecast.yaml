@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: up2-svc
+  name: forecast-svc
   labels:
-    name: up2-svc
+    name: forecast-svc
 spec:
-  replicas: 50
+  replicas: 10
   template:
     metadata:
-      labels: {"name": "up2", "version": "vBUILD_NUMBER"}
+      labels: {"name": "forecast", "version": "vBUILD_NUMBER"}
     spec:
       containers:
-      - name:  up2-server
-        image: dockerhub/dev-pool/testing
+      - name:  forecast-svc
+        image: gcr.io/forecast-dev-1/forecast:latest
         ports:
         - containerPort: 8080
         #  hostPort: 8080
