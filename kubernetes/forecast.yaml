@@ -8,7 +8,7 @@ spec:
   replicas: 10
   template:
     metadata:
-      labels: {"name": "forecast", "version": "vBUILD_NUMBER"}
+      labels: {"name": "forecast"}
     spec:
       containers:
       - name:  forecast-svc
