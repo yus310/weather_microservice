@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: up2-svc
+  labels:
+    name: up2-svc
+spec:
+  replicas: 50
+  template:
+    metadata:
+      labels: {"name": "up2", "version": "vBUILD_NUMBER"}
+    spec:
+      containers:
+      - name:  up2-server
+        image: dockerhub/dev-pool/testing
+        ports:
+        - containerPort: 8080
+        #  hostPort: 8080
+        resources:
+          limits:
+            cpu: "1000m"
+          #requests:
+          #  cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            # Path to probe; should be cheap, but representative of typical behavior
+            path: /
+            port: 8080
+          initialDelaySeconds: 800
+          timeoutSeconds: 60
+          periodSeconds: 120
+          failureThreshold: 3
+        #readinessProbe:
+        #  httpGet:
+        #    path: /
+        #    port: 8080
+        #  initialDelaySeconds: 30
+        #  timeoutSeconds: 30
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool
+
